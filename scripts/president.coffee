@@ -10,7 +10,8 @@ module.exports = (robot) ->
 
   robot.hear /닭|치킨|대통령|박근혜|ㄹ혜|ㄹㅎ/i, (msg) ->
     rate = 100 - (Math.round(remainingDay/totalDay*100 * 100) / 100)
-    squareCount = Math.round(rate*2/10)
-    blackSquare = '■'.repeat(squareCount)
-    whiteSquare = '□'.repeat(20-squareCount)
-    msg.send "퇴임 로딩중... [#{blackSquare}#{whiteSquare}] #{rate}% - 남은 날짜: #{remainingDay}일"
+    cellCount = Math.round(rate*2/10)
+    blackCell = '■'
+    whiteCell = '□'
+    cell = blackCell.repeat(cellCount) + whiteCell.repeat(20-cellCount)
+    msg.send "퇴임 로딩중... [#{cell}] #{rate}% - 남은 날짜: #{remainingDay}일"
